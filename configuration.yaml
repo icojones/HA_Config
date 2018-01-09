@@ -33,6 +33,8 @@ frontend:
       primary-color: orange
     purple:
       primary-color: purple
+    lightgreen:
+      primary-color: lightgreen
 
 # Enables configuration UI
 config:
