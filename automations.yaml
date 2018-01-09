@@ -1,0 +1,611 @@
+- action:
+  - data:
+      entity_id: switch.wardrobe_socket_switch
+    service: switch.turn_on
+  alias: Wardrobe Light On
+  condition: []
+  id: '1514623034486'
+  trigger:
+  - entity_id: sensor.wardrobe_access_control
+    from: '23'
+    platform: state
+    to: '22'
+- action:
+  - data:
+      entity_id: switch.wardrobe_socket_switch
+    service: switch.turn_off
+  alias: Wardrobe Light Off
+  condition: []
+  id: '1514623158505'
+  trigger:
+  - entity_id: sensor.wardrobe_access_control
+    from: '22'
+    platform: state
+    to: '23'
+- action:
+  - data:
+      entity_id: switch.wardrobe_socket_switch
+    service: switch.turn_off
+  alias: Wardrobe Light Off Timed
+  trigger:
+  - entity_id: sensor.wardrobe_access_control
+    from: '23'
+    platform: state
+    to: '22'
+    for:
+      minutes: 1
+- action:
+  - data:
+      event: all_kitchen_lights_on
+    service: ifttt.trigger
+  alias: all_kitchen_lights_on
+  id: '1515182538011'
+  trigger:
+  - entity_id: input_boolean.all_kitchen_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: all_kitchen_lights_off
+    service: ifttt.trigger
+  alias: all_kitchen_lights_off
+  condition: []
+  id: '1515182972886'
+  trigger:
+  - entity_id: input_boolean.all_kitchen_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: kitchen1_lights_on
+    service: ifttt.trigger
+  - data:
+      event: kitchen2_lights_on
+    service: ifttt.trigger
+  alias: kitchen lights on
+  condition: []
+  id: '1515183803362'
+  trigger:
+  - entity_id: input_boolean.kitchen_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: kitchen1_lights_off
+    service: ifttt.trigger
+  - data:
+      event: kitchen2_lights_off
+    service: ifttt.trigger
+  alias: kitchen lights off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.kitchen_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: dining_room_lights_on
+    service: ifttt.trigger
+  alias: dining_room_lights_on
+  condition: []
+  trigger:
+  - entity_id: input_boolean.dining_room_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: dining_room_lights_off
+    service: ifttt.trigger
+  alias: dining_room_lights_off
+  trigger:
+  - entity_id: input_boolean.dining_room_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: lava_lamp_on
+    service: ifttt.trigger
+  alias: Lava Lamp On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.lava_lamp
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: lava_lamp_off
+    service: ifttt.trigger
+  alias: Lava Lamp Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.lava_lamp
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: wall_lights_off
+    service: ifttt.trigger
+  - data:
+      event: wall_lights_off
+    service: ifttt.trigger
+  alias: wall lights off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.wall_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: ceiling_lights_off
+    service: ifttt.trigger
+  - data:
+      event: ceiling_lights_off
+    service: ifttt.trigger
+  alias: ceiling lights off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.ceiling_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: wall_lights_on
+    service: ifttt.trigger
+  - data:
+      event: wall_lights_on
+    service: ifttt.trigger
+  alias: wall lights on
+  condition: []
+  trigger:
+  - entity_id: input_boolean.wall_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: ceiling_lights_on
+    service: ifttt.trigger
+  - data:
+      event: ceiling_lights_on
+    service: ifttt.trigger
+  alias: ceiling lights on
+  condition: []
+  trigger:
+  - entity_id: input_boolean.ceiling_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: hall_lights_off
+    service: ifttt.trigger
+  alias: Hall Lights Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.hall_lights
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: hall_lights_on
+    service: ifttt.trigger
+  alias: Hall Lights On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.hall_lights
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: coloured_light_off
+    service: ifttt.trigger
+  alias: Coloured Light Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.coloured_light
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: coloured_light_on
+    service: ifttt.trigger
+  alias: Coloured Light On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.coloured_light
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: landing_light_off
+    service: ifttt.trigger
+  alias: Landing Light Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.landing_light
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: landing_light_on
+    service: ifttt.trigger
+  alias: Landing Light On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.landing_light
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: outside_lights_off
+    service: ifttt.trigger
+  alias: Outside Light Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.outside_light
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: outside_lights_on
+    service: ifttt.trigger
+  alias: Outside Light On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.outside_light
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: playroom_lights_off
+    service: ifttt.trigger
+  alias: Playroom Light Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.playroom_light
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: playroom_lights_on
+    service: ifttt.trigger
+  alias: Playroom Light On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.playroom_light
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: ensuite_light_off
+    service: ifttt.trigger
+  alias: En-suite Light Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.ensuite_light
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: ensuite_light_on
+    service: ifttt.trigger
+  alias: En-suite Light On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.ensuite_light
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: bathroom_light_off
+    service: ifttt.trigger
+  alias: Bathroom Light Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.bathroom_light
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: bathroom_light_on
+    service: ifttt.trigger
+  alias: Bathroom Light On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.bathroom_light
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: media_player.lounge
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.kitchen
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.dining_room
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lounge
+      master: media_player.kitchen
+    service: media_player.sonos_join
+  - data:
+      entity_id: media_player.kitchen
+      source: BBC Radio 2
+    service: media_player.select_source
+  - data:
+      entity_id: input_boolean.downstairs_radio
+    service: input_boolean.turn_on
+  alias: Downstairs Radio 2
+  condition: []
+  trigger:
+  - entity_id: input_select.radio_downstairs
+    platform: state
+    to: BBC Radio 2
+- action:
+  - data:
+      entity_id: automation.downstairs_radio_2
+    service: automation.trigger
+  alias: Downstairs Radio On
+  condition: []
+  trigger:
+  - entity_id: input_boolean.downstairs_radio
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: media_player.kitchen
+    service: media_player.media_stop
+  - data:
+      entity_id: media_player.lounge
+    service: media_player.media_stop
+  - data:
+      entity_id: media_player.dining_room
+    service: media_player.media_stop
+  alias: Downstairs Radio Off
+  condition: []
+  trigger:
+  - entity_id: input_boolean.downstairs_radio
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: media_player.lounge
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.kitchen
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.dining_room
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lounge
+      master: media_player.kitchen
+    service: media_player.sonos_join
+  - data:
+      entity_id: media_player.kitchen
+      source: BBC Radio 5 live sports extra
+    service: media_player.select_source
+  alias: Downstairs Radio 5 Live SX
+  condition: []
+  trigger:
+  - entity_id: input_select.radio_downstairs
+    platform: state
+    to: BBC Radio 5 live sports extra
+- action:
+  - data:
+      entity_id: media_player.lounge
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.kitchen
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.dining_room
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lounge
+      master: media_player.kitchen
+    service: media_player.sonos_join
+  - data:
+      entity_id: media_player.kitchen
+      source: BBC Radio 5 live
+    service: media_player.select_source
+  - data:
+      entity_id: input_boolean.downstairs_radio
+    service: input_boolean.turn_on
+  alias: Downstairs Radio 5 Live
+  condition: []
+  trigger:
+  - entity_id: input_select.radio_downstairs
+    platform: state
+    to: BBC Radio 5 live
+- action:
+  - data:
+      entity_id: media_player.lounge
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lounge
+      master: media_player.kitchen
+    service: media_player.sonos_join
+  - data:
+      entity_id: media_player.kitchen
+      source: Absolute Radio 90s
+    service: media_player.select_source
+  - data:
+      entity_id: input_boolean.downstairs_radio
+    service: input_boolean.turn_on
+  alias: Downstairs Radio Absolute 90s
+  condition: []
+  trigger:
+  - entity_id: input_select.radio_downstairs
+    platform: state
+    to: Absolute Radio 90s
+- action:
+  - data:
+      entity_id: media_player.lounge
+      volume_level: 0.1
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.lounge
+      master: media_player.kitchen
+    service: media_player.sonos_join
+  - data:
+      entity_id: media_player.kitchen
+      source: BBC Radio 6 Music
+    service: media_player.select_source
+  - data:
+      entity_id: input_boolean.downstairs_radio
+    service: input_boolean.turn_on
+  alias: Downstairs Radio 6
+  condition: []
+  trigger:
+  - entity_id: input_select.radio_downstairs
+    platform: state
+    to: BBC Radio 6 Music
+- action:
+  - data:
+      friendly_name: 641-019-027
+    service: blink.snap_picture
+  alias: Scheduled Lounge Blink
+  condition:
+  - after: 06:00
+    before: '23:00'
+    condition: time
+  id: '1515314054062'
+  trigger:
+  - platform: time
+    minutes: /10
+    seconds: 0
+- action:
+  - data:
+      friendly_name: Front
+    service: blink.snap_picture
+  alias: Scheduled Front Blink
+  condition:
+  - after: 06:00
+    before: '23:00'
+    condition: time
+  trigger:
+  - platform: time
+    minutes: /10
+    seconds: 0
+- action:
+  - data:
+      friendly_name: Back
+    service: blink.snap_picture
+  alias: Scheduled Back Blink
+  condition:
+  - after: 06:00
+    before: '23:00'
+    condition: time
+  trigger:
+  - platform: time
+    minutes: /10
+    seconds: 0
+- action:
+  - data:
+      entity_id: light.kitchen_lamp
+      rgb_color:
+      - 255
+      - 255
+      - 255
+    service: light.turn_on
+  alias: Sensor Kitchen Lamp On
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  - condition: state
+    entity_id: light.kitchen_lamp
+    state: 'off'
+  id: '1515498324858'
+  trigger:
+  - entity_id: binary_sensor.lounge_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.kitchen_lamp
+    service: light.turn_off
+  alias: Sensor Kitchen Lamp Off
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  id: '1515499340625'
+  trigger:
+  - entity_id: binary_sensor.lounge_sensor
+    for:
+      seconds: 30
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: hall_lights_on
+    service: ifttt.trigger
+  alias: Sensor Hall Lights On
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  id: '1515499786745'
+  trigger:
+  - entity_id: binary_sensor.hall_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: hall_lights_off
+    service: ifttt.trigger
+  alias: Sensor Hall Lights Off
+  condition:
+  - after: sunset
+    before: sunrise
+    condition: sun
+  id: '1515499997279'
+  trigger:
+  - entity_id: binary_sensor.hall_sensor
+    for:
+      seconds: 30
+    from: 'on'
+    platform: state
+    to: 'off'

@@ -1,0 +1,153 @@
+#############
+#
+# Tabs
+#
+#############
+default_view:
+#cameras:
+  name: Cameras
+  view: yes
+  entities:
+    - group.all_cameras
+security:
+  name: Security
+  view: yes
+  entities:
+    - binary_sensor.lounge_sensor
+    - binary_sensor.hall_sensor
+    - group.blink_front
+    - group.blink_back
+    - group.blink_641019027
+    - binary_sensor.blink_armed_status
+weather:
+  name: Climate
+  view: yes
+  entities:
+    - sun.sun
+    - sensor.lounge_temperature
+    - sensor.hall_temperature
+    - sensor.wardrobe_temperature
+    - weather.met_office_faringdon
+    - group.metoffice
+    - camera.radar__satellite
+lights:
+  name: Lighting
+  view: yes
+  entities:
+    - group.kitchen_lights
+    - group.lounge_lights
+    - group.hall_lights
+    - group.upstairs_lights
+    - group.other_lights
+media:
+  name: Media
+  view: yes
+  entities:
+    - group.radio
+#############
+#
+# Logicals
+#
+#############
+metoffice:
+  name: Met Office Observations
+  entities:
+    - sensor.met_office_feels_like_temperature
+    - sensor.met_office_humidity
+    - sensor.met_office_probability_of_precipitation
+    - sensor.met_office_temperature
+    - sensor.met_office_uv
+    - sensor.met_office_visibility
+    - sensor.met_office_visibility_distance
+    - sensor.met_office_weather
+    - sensor.met_office_wind_direction
+    - sensor.met_office_wind_gust
+    - sensor.met_office_wind_speed
+blink_front:
+  name: Front
+  entities:
+    - binary_sensor.blink_front_motion_enabled
+    - sensor.blink_front_temperature
+    - sensor.blink_front_notifications
+    - sensor.blink_front_battery
+    - script.1515169777384
+blink_back:
+  name: Back
+  entities:
+    - binary_sensor.blink_back_motion_enabled
+    - sensor.blink_back_temperature
+    - sensor.blink_back_notifications
+    - sensor.blink_back_battery
+    - script.1515169800855
+blink_641019027:
+  name: Lounge
+  entities:
+    - binary_sensor.blink_641019027_motion_enabled
+    - sensor.blink_641019027_temperature
+    - sensor.blink_641019027_notifications
+    - sensor.blink_641019027_battery
+    - script.1515276213944
+#############
+#
+# Lights
+#
+#############
+kitchen_lights:
+  name: Kitchen
+  entities:
+    - sensor.lounge_luminance
+    - light.kitchen_lamp
+    - input_boolean.dining_room_lights
+    - input_boolean.kitchen_lights
+    - input_boolean.all_kitchen_lights
+lounge_lights:
+  name: Lounge
+  entities:
+    - input_boolean.lava_lamp
+    - input_boolean.wall_lights
+    - input_boolean.ceiling_lights
+hall_lights:
+  name: Hall
+  entities:
+    - sensor.hall_luminance
+    - input_boolean.hall_lights
+    - input_boolean.landing_light
+    - input_boolean.coloured_light
+other_lights:
+  name: Other
+  entities:
+    - binary_sensor.wardrobe_sensor
+    - sensor.wardrobe_access_control
+    - sensor.wardrobe_luminance
+    - input_boolean.playroom_light
+    - input_boolean.outside_light
+    - input_boolean.ensuite_light
+    - switch.wardrobe_socket_switch
+    - input_boolean.bathroom_light
+#############
+#
+# Radio
+#
+#############
+radio:
+  name: Radio
+  entities:
+    - input_boolean.downstairs_radio
+    - input_select.radio_downstairs
+    - media_player.kitchen
+    - media_player.lounge
+    - media_player.bathroom_speaker
+#############
+#
+# Cameras
+#
+#############
+all_cameras:
+  name: Cameras
+  entities:
+    - camera.front
+    - camera.back
+    - camera.lounge
+    - camera.mjpeg_camera
+    - camera.641019027
+    - camera.outside

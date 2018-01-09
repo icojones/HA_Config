@@ -1,0 +1,188 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Treetops
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+  themes:
+    brown:
+      primary-color: brown
+    grey:
+      primary-color: grey
+    yellow:
+      primary-color: yellow
+    green:
+      primary-color: green
+    teal:
+      primary-color: teal
+    orange:
+      primary-color: orange
+    purple:
+      primary-color: purple
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+#map:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: http://192.168.1.152:3218
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+input_boolean: !include input_boolean.yaml
+camera: !include cameras.yaml
+
+# Weather Met Office
+sensor:
+  - platform: metoffice
+    api_key: !secret metoffice_key
+    monitored_conditions:
+      - weather
+      - temperature
+      - feels_like_temperature
+      - wind_speed
+      - wind_direction
+      - wind_gust
+      - visibility
+      - visibility_distance
+      - uv
+      - precipitation
+      - humidity
+  - platform: rfxtrx
+    automatic_add: true
+#    devices:
+#      0a14000034204102101980:
+#        name: Outside
+#        data_type:
+#         - Humidity
+#         - Temperature
+
+weather:
+  - platform: metoffice
+    api_key: !secret metoffice_key
+
+# Pushbullet
+notify:
+  - name: NOTIFIER_PB
+    platform: pushbullet
+    api_key: !secret pushbullet
+
+# ifttt
+ifttt:
+  key: !secret ifttt
+
+# LIFX
+light:
+- platform: lifx
+
+# ffmpeg
+ffmpeg:
+  ffmpeg_bin: /usr/bin/avconv
+
+# Z Wave
+zwave:
+  usb_path: /dev/ttyACM0
+
+# Tracking
+#device_tracker:
+#  - platform: nmap_tracker
+#    hosts: 
+#      - 192.168.1.124
+#      - 192.168.1.71
+#    home_interval: 10
+
+# RFX433
+rfxtrx:
+#  device: ttyUSB-RFX433-A
+  device: ttyUSB-RFX433-B
+
+#binary_sensor:
+#  platform: rfxtrx
+#  automatic_add: True
+
+# RFX433
+#  platform: rfxtrx
+#  automatic_add: true
+
+# Media Player
+#media_player:
+#  - platform: gpmdp
+#    host: 192.168.1.152
+
+#Blink
+blink:
+  username: !secret blink_username
+  password: !secret blink_password
+
+#######################
+#
+# Input Select
+#
+#######################
+input_select:
+  radio_downstairs:
+    name: Station
+    options:
+      - BBC Radio 2
+      - BBC Radio 6 Music
+      - Absolute Radio 90s
+      - BBC Radio 5 live
+      - BBC Radio 5 live sports extra
+    icon: mdi:radio

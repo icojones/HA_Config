@@ -1,0 +1,18 @@
+'1515169777384':
+  alias: Refresh Front
+  sequence:
+  - data:
+      friendly_name: Front
+    service: blink.snap_picture
+'1515169800855':
+  alias: Refresh Back
+  sequence:
+  - data:
+      friendly_name: Back
+    service: blink.snap_picture
+'1515276213944':
+  alias: Refresh 641019027
+  sequence:
+  - data:
+      friendly_name: 641-019-027
+    service: blink.snap_picture

@@ -1,0 +1,43 @@
+#input_boolean:
+  dining_room_lights:
+    name: Dining Room
+    icon: mdi:lightbulb-on-outline
+  all_kitchen_lights:
+    name: All
+    icon: mdi:lightbulb-on-outline
+  kitchen_lights:
+    name: Kitchen
+    icon: mdi:lightbulb-on-outline
+  lava_lamp:
+    name: Lava Lamp
+    icon: mdi:rocket
+  wall_lights:
+    name: Wall
+    icon: mdi:lightbulb-on-outline
+  ceiling_lights:
+    name: Ceiling
+    icon: mdi:lightbulb-on-outline
+  hall_lights:
+    name: Downstairs
+    icon: mdi:lightbulb-on-outline
+  landing_light:
+    name: Landing
+    icon: mdi:lightbulb-on-outline
+  coloured_light:
+    name: Coloured
+    icon: mdi:lamp
+  outside_light:
+    name: Outside
+    icon: mdi:lightbulb-on-outline
+  playroom_light:
+    name: Playroom
+    icon: mdi:lightbulb-on-outline
+  ensuite_light:
+    name: En-suite
+    icon: mdi:lightbulb-on-outline
+  bathroom_light:
+    name: Bathroom
+    icon: mdi:lightbulb-on-outline
+  downstairs_radio:
+    name: Downstairs
+    icon: mdi:radio
