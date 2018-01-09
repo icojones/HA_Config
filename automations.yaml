@@ -548,12 +548,32 @@
     service: light.turn_on
   alias: Sensor Kitchen Lamp On
   condition:
-  - after: sunset
-    before: sunrise
-    condition: sun
   - condition: state
     entity_id: light.kitchen_lamp
     state: 'off'
+  - condition: sun
+    after: sunset
+  id: '1515498324858'
+  trigger:
+  - entity_id: binary_sensor.lounge_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.kitchen_lamp
+      rgb_color:
+      - 255
+      - 255
+      - 255
+    service: light.turn_on
+  alias: Sensor Kitchen Lamp On
+  condition:
+  - condition: state
+    entity_id: light.kitchen_lamp
+    state: 'off'
+  - condition: sun
+    before: sunrise
   id: '1515498324858'
   trigger:
   - entity_id: binary_sensor.lounge_sensor
@@ -567,6 +587,21 @@
   alias: Sensor Kitchen Lamp Off
   condition:
   - after: sunset
+    condition: sun
+  id: '1515499340625'
+  trigger:
+  - entity_id: binary_sensor.lounge_sensor
+    for:
+      seconds: 30
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: light.kitchen_lamp
+    service: light.turn_off
+  alias: Sensor Kitchen Lamp Off
+  condition:
     before: sunrise
     condition: sun
   id: '1515499340625'
@@ -583,8 +618,21 @@
     service: ifttt.trigger
   alias: Sensor Hall Lights On
   condition:
+  - before: sunrise
+    condition: sun
+  id: '1515499786745'
+  trigger:
+  - entity_id: binary_sensor.hall_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      event: hall_lights_on
+    service: ifttt.trigger
+  alias: Sensor Hall Lights On
+  condition:
   - after: sunset
-    before: sunrise
     condition: sun
   id: '1515499786745'
   trigger:
@@ -598,8 +646,23 @@
     service: ifttt.trigger
   alias: Sensor Hall Lights Off
   condition:
+  - before: sunrise
+    condition: sun
+  id: '1515499997279'
+  trigger:
+  - entity_id: binary_sensor.hall_sensor
+    for:
+      seconds: 30
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      event: hall_lights_off
+    service: ifttt.trigger
+  alias: Sensor Hall Lights Off
+  condition:
   - after: sunset
-    before: sunrise
     condition: sun
   id: '1515499997279'
   trigger:
