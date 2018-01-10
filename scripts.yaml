@@ -11,8 +11,31 @@
       friendly_name: Back
     service: blink.snap_picture
 '1515276213944':
-  alias: Refresh 641019027
+  alias: Refresh Lounge
   sequence:
   - data:
-      friendly_name: 641-019-027
+      friendly_name: Lounge
     service: blink.snap_picture
+'1515594489865':
+  alias: James Room Warm
+  sequence:
+  - data:
+      message: James' room is {{ states.sensor.genius_james.state }}'
+    service: notify.notifier_pb
+'1515595241280':
+  alias: james room warm2
+  sequence:
+  - alias: ''
+    data:
+      entity_id: input_boolean.james_room_warm
+    service: homeassistant.turn_on
+  - data:
+      message: '''James'' room is warm'''
+    service: notify.notifier_pb
+'1515596564855':
+  alias: James Room
+  sequence:
+  - data:
+      message: '{{ message }}'
+      title: '{{ title }}'
+    service: notify.notifier_pb

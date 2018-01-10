@@ -1,6 +1,9 @@
 camera.generic_camera:
   friendly_name: Radar & Satellite
 group.all_devices: {}
+group.all_lights:
+  hidden: false
+  friendly_name: Lights
 zwave.wardrobe_socket:
   hidden: false
 sensor.wardrobe_socket_current:
@@ -54,16 +57,16 @@ binary_sensor.blink_armed_status:
   hidden: true
 script.1515169777384:
   icon: mdi:refresh
-sensor.blink_641019027_battery:
+sensor.blink_lounge_battery:
   friendly_name: Battery
   icon: mdi:battery-outline
-sensor.blink_641019027_notifications:
+sensor.blink_lounge_notifications:
   friendly_name: Notifications
   icon: mdi:bell-ring
-sensor.blink_641019027_temperature:
+sensor.blink_lounge_temperature:
   friendly_name: Temperature
   icon: mdi:thermometer
-binary_sensor.blink_641019027_motion_enabled:
+binary_sensor.blink_lounge_motion_enabled:
   friendly_name: Motion Detection
   icon: mdi:walk
 script.1515276213944:
@@ -138,3 +141,27 @@ camera.lounge:
   friendly_name: Hall
 binary_sensor.lounge_sensor:
   friendly_name: Kitchen Sensor
+switch.0a14000034204101010070:
+  friendly_name: Ceiling Lights
+switch.0a14000134204103010070:
+  friendly_name: Lava Lamp
+  icon: mdi:lava-lamp
+switch.0a14000234204102000070:
+  friendly_name: Wall Lights
+  icon: mdi:lightbulb-on-outline
+switch.0a14000534204302010070:
+  friendly_name: Hall Lights
+  icon: mdi:lightbulb-on-outline
+switch.0a14000334204301000070:
+  friendly_name: Coloured Light
+  icon: mdi:lamp
+group.media_player:
+  hidden: false
+media_player.dining_room:
+  entity_picture: ''
+sensor.sonos_kitchen_state:
+  icon: mdi:speaker
+sensor.sonos_ensuite_state:
+  icon: mdi:speaker
+sensor.sonos_lounge_state:
+  icon: mdi:speaker

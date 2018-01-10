@@ -88,171 +88,6 @@
     to: 'off'
 - action:
   - data:
-      event: dining_room_lights_on
-    service: ifttt.trigger
-  alias: dining_room_lights_on
-  condition: []
-  trigger:
-  - entity_id: input_boolean.dining_room_lights
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: dining_room_lights_off
-    service: ifttt.trigger
-  alias: dining_room_lights_off
-  trigger:
-  - entity_id: input_boolean.dining_room_lights
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: lava_lamp_on
-    service: ifttt.trigger
-  alias: Lava Lamp On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.lava_lamp
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: lava_lamp_off
-    service: ifttt.trigger
-  alias: Lava Lamp Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.lava_lamp
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: wall_lights_off
-    service: ifttt.trigger
-  - data:
-      event: wall_lights_off
-    service: ifttt.trigger
-  alias: wall lights off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.wall_lights
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: ceiling_lights_off
-    service: ifttt.trigger
-  - data:
-      event: ceiling_lights_off
-    service: ifttt.trigger
-  alias: ceiling lights off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.ceiling_lights
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: wall_lights_on
-    service: ifttt.trigger
-  - data:
-      event: wall_lights_on
-    service: ifttt.trigger
-  alias: wall lights on
-  condition: []
-  trigger:
-  - entity_id: input_boolean.wall_lights
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: ceiling_lights_on
-    service: ifttt.trigger
-  - data:
-      event: ceiling_lights_on
-    service: ifttt.trigger
-  alias: ceiling lights on
-  condition: []
-  trigger:
-  - entity_id: input_boolean.ceiling_lights
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: hall_lights_off
-    service: ifttt.trigger
-  alias: Hall Lights Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.hall_lights
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: hall_lights_on
-    service: ifttt.trigger
-  alias: Hall Lights On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.hall_lights
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: coloured_light_off
-    service: ifttt.trigger
-  alias: Coloured Light Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.coloured_light
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: coloured_light_on
-    service: ifttt.trigger
-  alias: Coloured Light On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.coloured_light
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: landing_light_off
-    service: ifttt.trigger
-  alias: Landing Light Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.landing_light
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: landing_light_on
-    service: ifttt.trigger
-  alias: Landing Light On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.landing_light
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
       event: outside_lights_off
     service: ifttt.trigger
   alias: Outside Light Off
@@ -500,7 +335,7 @@
     to: BBC Radio 6 Music
 - action:
   - data:
-      friendly_name: 641-019-027
+      friendly_name: Lounge
     service: blink.snap_picture
   alias: Scheduled Lounge Blink
   condition:
@@ -592,7 +427,7 @@
   trigger:
   - entity_id: binary_sensor.lounge_sensor
     for:
-      seconds: 30
+      seconds: 45
     from: 'on'
     platform: state
     to: 'off'
@@ -608,7 +443,7 @@
   trigger:
   - entity_id: binary_sensor.lounge_sensor
     for:
-      seconds: 30
+      seconds: 45
     from: 'on'
     platform: state
     to: 'off'
@@ -628,11 +463,12 @@
     to: 'on'
 - action:
   - data:
-      event: hall_lights_on
-    service: ifttt.trigger
+      entity_id: light.downstairs_lw
+    service: light.turn_on
   alias: Sensor Hall Lights On
   condition:
   - after: sunset
+    after_offset: "+00:30:00"
     condition: sun
   id: '1515499786745'
   trigger:
@@ -658,11 +494,12 @@
     to: 'off'
 - action:
   - data:
-      event: hall_lights_off
-    service: ifttt.trigger
+      entity_id: light.downstairs_lw
+    service: light.turn_off
   alias: Sensor Hall Lights Off
   condition:
   - after: sunset
+    after_offset: "+00:30:00"
     condition: sun
   id: '1515499997279'
   trigger:

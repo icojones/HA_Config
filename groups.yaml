@@ -3,8 +3,8 @@
 # Tabs
 #
 #############
-default_view:
-#cameras:
+#default_view:
+cameras:
   name: Cameras
   view: yes
   entities:
@@ -17,7 +17,7 @@ security:
     - binary_sensor.hall_sensor
     - group.blink_front
     - group.blink_back
-    - group.blink_641019027
+    - group.blink_lounge
     - binary_sensor.blink_armed_status
 weather:
   name: Climate
@@ -39,6 +39,7 @@ lights:
     - group.hall_lights
     - group.upstairs_lights
     - group.other_lights
+    - group.all_lights
 media:
   name: Media
   view: yes
@@ -79,13 +80,13 @@ blink_back:
     - sensor.blink_back_notifications
     - sensor.blink_back_battery
     - script.1515169800855
-blink_641019027:
+blink_lounge:
   name: Lounge
   entities:
-    - binary_sensor.blink_641019027_motion_enabled
-    - sensor.blink_641019027_temperature
-    - sensor.blink_641019027_notifications
-    - sensor.blink_641019027_battery
+    - binary_sensor.blink_lounge_motion_enabled
+    - sensor.blink_lounge_temperature
+    - sensor.blink_lounge_notifications
+    - sensor.blink_lounge_battery
     - script.1515276213944
 #############
 #
@@ -134,9 +135,12 @@ radio:
   entities:
     - input_boolean.downstairs_radio
     - input_select.radio_downstairs
-    - media_player.kitchen
-    - media_player.lounge
-    - media_player.bathroom_speaker
+#    - media_player.kitchen
+#    - media_player.lounge
+#    - media_player.bathroom_speaker
+    - sensor.sonos_kitchen_state
+    - sensor.sonos_lounge_state
+    - sensor.sonos_ensuite_state
 #############
 #
 # Cameras
@@ -147,7 +151,7 @@ all_cameras:
   entities:
     - camera.front
     - camera.back
-    - camera.lounge
     - camera.mjpeg_camera
-    - camera.641019027
+    - camera.lounge_2
+    - camera.lounge
     - camera.outside

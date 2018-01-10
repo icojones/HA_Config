@@ -112,10 +112,27 @@ sensor:
 #    devices:
 #      0a14000034204102101980:
 #        name: Outside
-#        data_type:
-#         - Humidity
-#         - Temperature
-
+    data_type:
+      - Humidity
+      - Temperature
+  - platform: template
+    sensors:
+      sonos_kitchen_state:
+        value_template: '{{ states("media_player.kitchen") }}'
+        friendly_name: Kitchen
+      sonos_lounge_state:
+        value_template: '{{ states("media_player.lounge") }}'
+        friendly_name: Lounge
+      sonos_ensuite_state:
+        value_template: '{{ states("media_player.bathroom_speaker") }}'
+        friendly_name: En-Suite
+      genius_ensuite:
+        value_template: '{{ states("input_boolean.ensuite_warm") }}'
+        friendly_name: En-Suite Temp
+      genius_james:
+        value_template: '{{ states("input_boolean.james_room_warm") }}'
+        friendly_name: James
+        
 weather:
   - platform: metoffice
     api_key: !secret metoffice_key
@@ -129,10 +146,6 @@ notify:
 # ifttt
 ifttt:
   key: !secret ifttt
-
-# LIFX
-light:
-- platform: lifx
 
 # ffmpeg
 ffmpeg:
@@ -152,8 +165,50 @@ zwave:
 
 # RFX433
 rfxtrx:
+  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A11I6NWQ-if00-port0
 #  device: ttyUSB-RFX433-A
-  device: ttyUSB-RFX433-B
+#  device: ttyUSB-RFX433-B
+#  device: /dev/ttyUSB0
+  debug: True
+  dummy: False
+
+light:
+# RFX
+  - platform: rfxtrx
+    automatic_add: True
+    devices:
+      0a140000f427e40d010060:
+        name: LW01
+      0a14000034204302010070:
+        name: Downstairs LW
+      0a14000034204303010070:
+        name: Landing LW
+      0a14000034204401010070:
+        name: Dining Room LW
+      0a14000034204403010070:
+        name: Kitchen 1 LW
+      0a14000134204404010070:
+        name: Kitchen 2 LW
+      0a14000234204103010070:
+        name: Lava Lamp LW
+      0a14000034204101010070:
+        name: Ceiling Lights LW
+      0a14000134204102010070:
+        name: Wall Lights LW
+      0a14000234204301010070:
+        name: Coloured Light LW
+
+# LIFX
+  - platform: lifx
+
+switch:
+  platform: rfxtrx
+  automatic_add: True
+  
+# RFX433
+#rfxtrx:
+#  device: ttyUSB-RFX433-A
+#  device: ttyUSB-RFX433-B
 
 #binary_sensor:
 #  platform: rfxtrx
@@ -188,3 +243,8 @@ input_select:
       - BBC Radio 5 live
       - BBC Radio 5 live sports extra
     icon: mdi:radio
+
+# google play music
+media_player:
+  - platform: gpmdp
+    host: localhost
