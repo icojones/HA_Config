@@ -373,7 +373,6 @@
   - platform: time
     minutes: /10
     seconds: 0
-
 - action:
   - data:
       entity_id: light.kitchen_lamp
@@ -382,21 +381,34 @@
       - 255
       - 255
     service: light.turn_on
-  - data:
-      entity_id: input_boolean.kitchen_tripped
-    service: input_boolean.turn_on
   alias: Sensor Kitchen Lamp On
   condition:
   - condition: state
     entity_id: light.kitchen_lamp
     state: 'off'
-  - condition: or
-    conditions:
-    - condition: sun
-      after: sunset
-      after_offset: "00:15:00"
-    - condition: sun
-      before: sunrise
+  - condition: sun
+    after: sunset
+  id: '1515498324858'
+  trigger:
+  - entity_id: binary_sensor.lounge_sensor
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.kitchen_lamp
+      rgb_color:
+      - 255
+      - 255
+      - 255
+    service: light.turn_on
+  alias: Sensor Kitchen Lamp On
+  condition:
+  - condition: state
+    entity_id: light.kitchen_lamp
+    state: 'off'
+  - condition: sun
+    before: sunrise
   id: '1515498324858'
   trigger:
   - entity_id: binary_sensor.lounge_sensor
@@ -407,18 +419,26 @@
   - data:
       entity_id: light.kitchen_lamp
     service: light.turn_off
-  - data:
-      entity_id: input_boolean.kitchen_tripped
-    service: input_boolean.turn_off
   alias: Sensor Kitchen Lamp Off
   condition:
-    condition: and
-    conditions:
-    - condition: sun
-      after: sunset
-    - condition: state
-      entity_id: input_boolean.kitchen_tripped
-      state: 'on'    
+  - after: sunset
+    condition: sun
+  id: '1515499340625'
+  trigger:
+  - entity_id: binary_sensor.lounge_sensor
+    for:
+      seconds: 45
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: light.kitchen_lamp
+    service: light.turn_off
+  alias: Sensor Kitchen Lamp Off
+  condition:
+    before: sunrise
+    condition: sun
   id: '1515499340625'
   trigger:
   - entity_id: binary_sensor.lounge_sensor
@@ -448,7 +468,7 @@
   alias: Sensor Hall Lights On
   condition:
   - after: sunset
-    after_offset: "00:15:00"
+    after_offset: "+00:30:00"
     condition: sun
   id: '1515499786745'
   trigger:
@@ -479,7 +499,7 @@
   alias: Sensor Hall Lights Off
   condition:
   - after: sunset
-    after_offset: "00:15:00"
+    after_offset: "+00:30:00"
     condition: sun
   id: '1515499997279'
   trigger:

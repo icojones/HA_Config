@@ -20,7 +20,7 @@
   alias: James Room Warm
   sequence:
   - data:
-      message: James' room is {{ states.sensor.genius_james.state }}'
+      message: James' room is warm
     service: notify.notifier_pb
 '1515595241280':
   alias: james room warm2

@@ -26,3 +26,8 @@
   james_room_warm:
     name: James' Room Warm
     icon: mdi:thermometer
+  harry_room_warm:
+    name: Harry's Room Warm
+    icon: mdi:thermometer
+  kitchen_tripped:
+    name: Kitchen Light Sensor Tripped

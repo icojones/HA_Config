@@ -109,9 +109,9 @@ sensor:
       - humidity
   - platform: rfxtrx
     automatic_add: true
-#    devices:
-#      0a14000034204102101980:
-#        name: Outside
+    devices:
+      0a14000034204102101980:
+        name: Outside
     data_type:
       - Humidity
       - Temperature
@@ -127,11 +127,29 @@ sensor:
         value_template: '{{ states("media_player.bathroom_speaker") }}'
         friendly_name: En-Suite
       genius_ensuite:
-        value_template: '{{ states("input_boolean.ensuite_warm") }}'
-        friendly_name: En-Suite Temp
+        value_template: >-
+          {% if is_state('input_boolean.harry_room_warm', 'on') %}
+            Warm
+          {% else %}
+            Cold
+          {% endif %}
+        friendly_name: En-Suite
       genius_james:
-        value_template: '{{ states("input_boolean.james_room_warm") }}'
-        friendly_name: James
+        value_template: >-
+          {% if is_state('input_boolean.harry_room_warm', 'on') %}
+            Warm
+          {% else %}
+            Cold
+          {% endif %}
+        friendly_name: James' Room
+      genius_harry:
+        friendly_name: Harry’s Room
+        value_template: >-
+          {% if is_state('input_boolean.harry_room_warm', 'on') %}
+            Warm
+          {% else %}
+            Cold
+          {% endif %}
         
 weather:
   - platform: metoffice
@@ -156,19 +174,16 @@ zwave:
   usb_path: /dev/ttyACM0
 
 # Tracking
-#device_tracker:
-#  - platform: nmap_tracker
-#    hosts: 
-#      - 192.168.1.124
-#      - 192.168.1.71
-#    home_interval: 10
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 
+      - 192.168.1.124
+      - 192.168.1.71
+    home_interval: 10
 
 # RFX433
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A11I6NWQ-if00-port0
-#  device: ttyUSB-RFX433-A
-#  device: ttyUSB-RFX433-B
-#  device: /dev/ttyUSB0
   debug: True
   dummy: False
 
@@ -204,24 +219,6 @@ light:
 switch:
   platform: rfxtrx
   automatic_add: True
-  
-# RFX433
-#rfxtrx:
-#  device: ttyUSB-RFX433-A
-#  device: ttyUSB-RFX433-B
-
-#binary_sensor:
-#  platform: rfxtrx
-#  automatic_add: True
-
-# RFX433
-#  platform: rfxtrx
-#  automatic_add: true
-
-# Media Player
-#media_player:
-#  - platform: gpmdp
-#    host: 192.168.1.152
 
 #Blink
 blink:
@@ -244,7 +241,3 @@ input_select:
       - BBC Radio 5 live sports extra
     icon: mdi:radio
 
-# google play music
-media_player:
-  - platform: gpmdp
-    host: localhost

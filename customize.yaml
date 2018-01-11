@@ -1,6 +1,7 @@
 camera.generic_camera:
   friendly_name: Radar & Satellite
-group.all_devices: {}
+#group.all_devices:
+#  hidden: false
 group.all_lights:
   hidden: false
   friendly_name: Lights
@@ -21,23 +22,6 @@ sensor.wardrobe_socket_voltage:
   hidden: true
 sensor.wardrobe_socket_energy:
   hidden: true
-zwave.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor:
-  friendly_name: Wardrobe sensor
-sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_access_control:
-  friendly_name: Wardrobe Access Control
-  old_entity_id: sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_access_control_10_9
-sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_alarm_level:
-  friendly_name: Wardrobe Alarm Level
-sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_alarm_type:
-  friendly_name: Wardrobe Alarm Type
-sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_luminance:
-  friendly_name: Wardrobe Luminance
-binary_sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_sensor:
-  friendly_name: Wardrobe Sensor
-sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_sourcenodeid:
-  friendly_name: Wardrobe SourceNodeId
-sensor.philio_technology_corporation_pst02c_doorwindow_3_in_1_sensor_temperature:
-  friendly_name: Wardrobe Temperature
 device_tracker.samsunggalaxys7domain_not_setinvalid:
   icon: mdi:airplane
 sensor.blink_front_battery:
