@@ -19,3 +19,17 @@
     icon: mdi:thermometer
   kitchen_tripped:
     name: Kitchen Light Sensor Tripped
+  hall_tripped:
+    name: Hall Light Sensor Tripped
+  bathroom_warm:
+    name: Bathroom Warm
+    icon: mdi:thermometer
+  bathroom_heating:
+    name: Bathroom Heating
+    icon: mdi:radiator
+  harry_room_heating:
+    name: Harry's Room Heating
+    icon: mdi:radiator
+  james_room_heating:
+    name: James' Room Heating
+    icon: mdi:radiator

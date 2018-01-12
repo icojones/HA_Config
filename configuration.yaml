@@ -109,6 +109,43 @@ sensor:
       - humidity
   - platform: rfxtrx
     automatic_add: true
+  # Dark Sky
+  - platform: darksky
+    name: Dark Sky Forecast
+    api_key: !secret darksky_key
+    forecast: 
+    #  - 1
+    #  - 2
+    monitored_conditions:
+      - summary
+      - icon
+      - nearest_storm_distance
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - temperature
+      - apparent_temperature
+      #- dew_point
+      - wind_speed
+      - wind_bearing
+      - cloud_cover
+      - humidity
+      - pressure
+      - visibility
+      #- ozone
+      #- minutely_summary
+      - hourly_summary
+      - daily_summary
+      - temperature_max
+      - temperature_min
+      - apparent_temperature_max
+      - apparent_temperature_min
+      - precip_intensity_max
+      #- uv_index
+    units: uk2
+    # update_interval:
+  # Moon    
+  - platform: moon
   - platform: template
     sensors:
       sonos_kitchen_state:
@@ -144,6 +181,38 @@ sensor:
           {% else %}
             Cold
           {% endif %}
+      genius_bathroom:
+        value_template: >-
+          {% if is_state('input_boolean.bathroom_warm', 'on') %}
+            Warm
+          {% else %}
+            Cold
+          {% endif %}
+        friendly_name: Bathroom
+      genius_bathroom_heating:
+        value_template: >-
+          {% if is_state('input_boolean.bathroom_heating', 'on') %}
+            Heating
+          {% else %}
+            Not Heating
+          {% endif %}
+        friendly_name: Bathroom Heating
+      genius_harry_room_heating:
+        value_template: >-
+          {% if is_state('input_boolean.harry_room_heating', 'on') %}
+            Heating
+          {% else %}
+            Not Heating
+          {% endif %}
+        friendly_name: Harry's Room Heating
+      genius_james_room_heating:
+        value_template: >-
+          {% if is_state('input_boolean.james_room_heating', 'on') %}
+            Heating
+          {% else %}
+            Not Heating
+          {% endif %}
+        friendly_name: James' Room Heating
         
 weather:
   - platform: metoffice
@@ -168,12 +237,12 @@ zwave:
   usb_path: /dev/ttyACM0
 
 # Tracking
-device_tracker:
-  - platform: nmap_tracker
-    hosts: 
-      - 192.168.1.124
-      - 192.168.1.71
-    home_interval: 20
+#device_tracker:
+#  - platform: nmap_tracker
+#    hosts: 
+#      - 192.168.1.124
+#      - 192.168.1.71
+#    home_interval: 20
 
 # RFX433
 rfxtrx:

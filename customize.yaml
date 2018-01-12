@@ -61,6 +61,7 @@ media_player.kitchen_speaker:
   hidden: true
 group.all_automations:
   hidden: false
+  friendly_name: Automation
 sensor.lounge_general:
   friendly_name: Kitchen General
   hidden: true
@@ -152,3 +153,134 @@ sensor.sonos_lounge_state:
   icon: mdi:speaker
 light.bathroom_switch:
   icon: mdi:flash
+# Dark Sky
+sensor.dark_sky_forecast_apparent_temperature:
+  friendly_name: Feels Like
+sensor.dark_sky_forecast_cloud_coverage:
+  friendly_name: Cloud
+sensor.dark_sky_forecast_cloud_coverage_1:
+  friendly_name: Cloud 1
+sensor.dark_sky_forecast_cloud_coverage_2:
+  friendly_name: Cloud 2
+sensor.dark_sky_forecast_daily_high_apparent_temperature:
+  friendly_name: Feels Like (H)
+sensor.dark_sky_forecast_daily_high_apparent_temperature_1:
+  friendly_name: Feels Like (H) 1
+sensor.dark_sky_forecast_daily_high_apparent_temperature_2:
+  friendly_name: Feels Like (H) 2
+sensor.dark_sky_forecast_daily_high_temperature:
+  friendly_name: High
+sensor.dark_sky_forecast_daily_high_temperature_1:
+  friendly_name: High 1
+sensor.dark_sky_forecast_daily_high_temperature_2:
+  friendly_name: High 2
+sensor.dark_sky_forecast_daily_low_apparent_temperature:
+  friendly_name: Feels Like (L)
+sensor.dark_sky_forecast_daily_low_apparent_temperature_1:
+  friendly_name: Feels Like (L) 1
+sensor.dark_sky_forecast_daily_low_apparent_temperature_2:
+  friendly_name: Feels Like (L) 2
+sensor.dark_sky_forecast_daily_low_temperature:
+  friendly_name: Low
+sensor.dark_sky_forecast_daily_low_temperature_1:
+  friendly_name: Low 1
+sensor.dark_sky_forecast_daily_low_temperature_2:
+  friendly_name: Low 2
+sensor.dark_sky_forecast_daily_max_precip_intensity:
+  friendly_name: Max Rain
+sensor.dark_sky_forecast_daily_max_precip_intensity_1:
+  friendly_name: Max Rain 1
+sensor.dark_sky_forecast_daily_max_precip_intensity_2:
+  friendly_name: Max Rain 2
+sensor.dark_sky_forecast_daily_summary:
+  friendly_name: Summary
+sensor.dark_sky_forecast_dew_point:
+  friendly_name: Dew Point
+sensor.dark_sky_forecast_dew_point_1:
+  friendly_name: Dew Point 1
+sensor.dark_sky_forecast_dew_point_2:
+  friendly_name: Dew Point 2
+sensor.dark_sky_forecast_hourly_summary:
+  friendly_name: Hourly Summary
+sensor.dark_sky_forecast_humidity:
+  friendly_name: Humidity
+sensor.dark_sky_forecast_humidity_1:
+  friendly_name: Humidity 1
+sensor.dark_sky_forecast_humidity_2:
+  friendly_name: Humidity 2
+sensor.dark_sky_forecast_minutely_summary:
+  friendly_name: Minute Summary
+sensor.dark_sky_forecast_nearest_storm_distance:
+  friendly_name: Nearest Storm
+sensor.dark_sky_forecast_ozone:
+  friendly_name: Ozone
+sensor.dark_sky_forecast_ozone_1:
+  friendly_name: Ozone 1
+sensor.dark_sky_forecast_ozone_2:
+  friendly_name: Ozone 2
+sensor.dark_sky_forecast_precip:
+  friendly_name: Rain Probability
+sensor.dark_sky_forecast_precip_1:
+  friendly_name: Rain Probability 1
+sensor.dark_sky_forecast_precip_2:
+  friendly_name: Rain Probability 2
+sensor.dark_sky_forecast_precip_intensity:
+  friendly_name: Forecast Rain
+sensor.dark_sky_forecast_precip_intensity_1:
+  friendly_name: Forecast Rain 1
+sensor.dark_sky_forecast_precip_intensity_2:
+  friendly_name: Forecast Rain 2
+sensor.dark_sky_forecast_precip_probability:
+  friendly_name: Forecast Rain Probability
+sensor.dark_sky_forecast_precip_probability_1:
+  friendly_name: Forecast Rain Probability 1
+sensor.dark_sky_forecast_precip_probability_2:
+  friendly_name: Forecast Rain Probability 2
+sensor.dark_sky_forecast_pressure:
+  friendly_name: Pressure
+sensor.dark_sky_forecast_pressure_1:
+  friendly_name: Pressure 1
+sensor.dark_sky_forecast_pressure_2:
+  friendly_name: Pressure 2
+sensor.dark_sky_forecast_summary:
+  friendly_name: Forecast Summary
+sensor.dark_sky_forecast_temperature:
+  friendly_name: Forecast Temp
+sensor.dark_sky_forecast_uv_index:
+  friendly_name: Forecast UV
+sensor.dark_sky_forecast_uv_index_1:
+  friendly_name: Forecast UV 1
+sensor.dark_sky_forecast_uv_index_2:
+  friendly_name: Forecast UV 2
+sensor.dark_sky_forecast_visibility:
+  friendly_name: Forecast Visibility
+sensor.dark_sky_forecast_visibility_1:
+  friendly_name: Forecast Visibility 1
+sensor.dark_sky_forecast_visibility_2:
+  friendly_name: Forecast Visibility 2
+sensor.dark_sky_forecast_wind_bearing:
+  friendly_name: Forecast Wind Direction
+sensor.dark_sky_forecast_wind_bearing_1:
+  friendly_name: Forecast Wind Direction 1
+sensor.dark_sky_forecast_wind_bearing_2:
+  friendly_name: Forecast Wind Direction 2
+sensor.dark_sky_forecast_wind_speed:
+  friendly_name: Forecast Wind Speed
+sensor.dark_sky_forecast_wind_speed_1:
+  friendly_name: Forecast Wind Speed 1
+sensor.dark_sky_forecast_wind_speed_2:
+  friendly_name: Forecast Wind Speed 2
+sensor.genius_bathroom:
+  icon: mdi:radiator
+sensor.genius_ensuite:
+  icon: mdi:radiator
+sensor.genius_harry:
+  icon: mdi:radiator
+sensor.genius_james:
+  icon: mdi:radiator
+sensor.genius_bathroom_heating:
+  icon: mdi:radiator
+sensor.genius_harry_room_heating:
+  icon: mdi:radiator
+sensor.genius_james_room_heating:
+  icon: mdi:radiator

@@ -353,28 +353,23 @@
 # Hall Sensor Light
 - action:
   - data:
-      event: hall_lights_on
-    service: ifttt.trigger
-  alias: Sensor Hall Lights On
-  condition:
-  - before: sunrise
-    condition: sun
-  id: '1515499786745'
-  trigger:
-  - entity_id: binary_sensor.hall_sensor
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      entity_id: light.downstairs_lw
+      entity_id: light.downstairs
     service: light.turn_on
+  - data:
+      entity_id: input_boolean.hall_tripped
+    service: input_boolean.turn_on
   alias: Sensor Hall Lights On
   condition:
-  - after: sunset
-    after_offset: "00:15:00"
-    condition: sun
-  id: '1515499786745'
+  - condition: state
+    entity_id: light.downstairs
+    state: 'off'
+  - condition: or
+    conditions:
+    - condition: sun
+      after: sunset
+      after_offset: "00:15:00"
+    - condition: sun
+      before: sunrise
   trigger:
   - entity_id: binary_sensor.hall_sensor
     from: 'off'
@@ -382,34 +377,24 @@
     to: 'on'
 - action:
   - data:
-      event: hall_lights_off
-    service: ifttt.trigger
-  alias: Sensor Hall Lights Off
-  condition:
-  - before: sunrise
-    condition: sun
-  id: '1515499997279'
-  trigger:
-  - entity_id: binary_sensor.hall_sensor
-    for:
-      seconds: 30
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      entity_id: light.downstairs_lw
+      entity_id: light.downstairs
     service: light.turn_off
+  - data:
+      entity_id: input_boolean.hall_tripped
+    service: input_boolean.turn_off
   alias: Sensor Hall Lights Off
   condition:
-  - after: sunset
-    after_offset: "00:15:00"
-    condition: sun
-  id: '1515499997279'
+    condition: and
+    conditions:
+    - condition: sun
+      after: sunset
+    - condition: state
+      entity_id: input_boolean.hall_tripped
+      state: 'on'
   trigger:
   - entity_id: binary_sensor.hall_sensor
     for:
-      seconds: 30
+      seconds: 45
     from: 'on'
     platform: state
     to: 'off'
