@@ -1,0 +1,34 @@
+# RFX
+  - platform: rfxtrx
+    automatic_add: True
+    devices:
+      0a14000034204302010070:
+        name: Downstairs
+      0a14000034204303010070:
+        name: Landing
+      0a14000034204401010070:
+        name: Dining Room
+      0a14000034204403010070:
+        name: Kitchen 1
+      0a14000134204404010070:
+        name: Kitchen 2
+      0a14000234204103010070:
+        name: Lava Lamp
+      0a14000034204101010070:
+        name: Ceiling Lights
+      0a14000134204102010070:
+        name: Wall Lights
+      0a14000234204301010070:
+        name: Coloured Light
+      0a14000034204601010070:
+        name: Outside
+      0a14000134204501010070:
+        name: Bathroom
+      0a14000234204201010070:
+        name: Playroom
+      0a140000f3b5a60d010060:
+        name: En-suite
+      0a14000034204701010070:
+        name: En-suite 2
+# LIFX
+  - platform: lifx

@@ -1,0 +1,17 @@
+  themes:
+    brown:
+      primary-color: brown
+    grey:
+      primary-color: grey
+    yellow:
+      primary-color: yellow
+    green:
+      primary-color: green
+    teal:
+      primary-color: teal
+    orange:
+      primary-color: orange
+    purple:
+      primary-color: purple
+    lightgreen:
+      primary-color: darkgreen

@@ -1,0 +1,15 @@
+  - platform: rfxtrx
+    automatic_add: True
+    devices:
+      0a14000034204001000070:
+        name: Printer
+      0a140000f427e40d010060:
+        name: Bathroom Switch
+      0a140007f5182110020050:
+        name: Landing Switch 1 
+      0a14000bf5182101010050:
+        name: Landing Switch 2
+      0a140003f342f301010060:
+        name: LW02
+      0a140027f342f310020050:
+        name: LW03

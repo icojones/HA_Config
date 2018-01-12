@@ -20,7 +20,9 @@ sensor.wardrobe_socket_voltage:
   hidden: true
 sensor.wardrobe_socket_energy:
   hidden: true
-device_tracker.samsunggalaxys7domain_not_setinvalid:
+device_tracker.mattsg7:
+  icon: mdi:airplane
+device_tracker.matts7:
   icon: mdi:airplane
 sensor.blink_front_battery:
   friendly_name: Battery
@@ -153,7 +155,6 @@ sensor.sonos_lounge_state:
   icon: mdi:speaker
 light.bathroom_switch:
   icon: mdi:flash
-# Dark Sky
 sensor.dark_sky_forecast_apparent_temperature:
   friendly_name: Feels Like
 sensor.dark_sky_forecast_cloud_coverage:
@@ -284,3 +285,6 @@ sensor.genius_harry_room_heating:
   icon: mdi:radiator
 sensor.genius_james_room_heating:
   icon: mdi:radiator
+switch.0a140003f342f301010060:
+  friendly_name: Landing Light Switch
+  icon: mdi:flash

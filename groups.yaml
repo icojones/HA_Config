@@ -9,8 +9,8 @@ default_view:
   view: yes
   icon: mdi:camcorder
   entities:
-    - device_tracker.samsunggalaxys7domain_not_setinvalid
-    - device_tracker.galaxya32016domain_not_setinvalid
+    - device_tracker.matts7
+    - device_tracker.kata3
     - group.all_cameras
 media:
   name: Media

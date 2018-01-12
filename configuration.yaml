@@ -1,310 +1,92 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Treetops
-  # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude
   longitude: !secret longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 0
-  # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
-  # Customization file
   customize: !include customize.yaml
 
-# Show links to resources in log and frontend
-#introduction:
-
-# Enables the frontend
-frontend:
-  themes:
-    brown:
-      primary-color: brown
-    grey:
-      primary-color: grey
-    yellow:
-      primary-color: yellow
-    green:
-      primary-color: green
-    teal:
-      primary-color: teal
-    orange:
-      primary-color: orange
-    purple:
-      primary-color: purple
-    lightgreen:
-      primary-color: darkgreen
-
-# Enables configuration UI
-config:
-
-http:
-  # Secrets are defined in the file secrets.yaml
-  api_password: !secret http_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
-
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
-
-# Discover some devices automatically
-discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables support for tracking state changes over time
-history:
-
-# View all events in a logbook
-logbook:
-
-# Enables a map showing the location of tracked devices
-#map:
-
-# Track the sun
-sun:
-
-# Text to speech
-tts:
-  - platform: google
-
-# Cloud
-cloud:
-
-panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: http://192.168.1.152:3218
+############################
+#
+# Include Files
+#
+############################
 
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 input_boolean: !include input_boolean.yaml
 camera: !include cameras.yaml
+sensor: !include sensors.yaml
+light: !include lights.yaml
+switch: !include switches.yaml
+frontend: !include themes.yaml
 
-# Weather Met Office
-sensor:
-  - platform: metoffice
-    api_key: !secret metoffice_key
-    monitored_conditions:
-      - weather
-      - temperature
-      - feels_like_temperature
-      - wind_speed
-      - wind_direction
-      - wind_gust
-      - visibility
-      - visibility_distance
-      - uv
-      - precipitation
-      - humidity
-  - platform: rfxtrx
-    automatic_add: true
-  # Dark Sky
-  - platform: darksky
-    name: Dark Sky Forecast
-    api_key: !secret darksky_key
-    forecast: 
-    #  - 1
-    #  - 2
-    monitored_conditions:
-      - summary
-      - icon
-      - nearest_storm_distance
-      - precip_type
-      - precip_intensity
-      - precip_probability
-      - temperature
-      - apparent_temperature
-      #- dew_point
-      - wind_speed
-      - wind_bearing
-      - cloud_cover
-      - humidity
-      - pressure
-      - visibility
-      #- ozone
-      #- minutely_summary
-      - hourly_summary
-      - daily_summary
-      - temperature_max
-      - temperature_min
-      - apparent_temperature_max
-      - apparent_temperature_min
-      - precip_intensity_max
-      #- uv_index
-    units: uk2
-    # update_interval:
-  # Moon    
-  - platform: moon
-  - platform: template
-    sensors:
-      sonos_kitchen_state:
-        value_template: '{{ states("media_player.kitchen") }}'
-        friendly_name: Kitchen
-      sonos_lounge_state:
-        value_template: '{{ states("media_player.lounge") }}'
-        friendly_name: Lounge
-      sonos_ensuite_state:
-        value_template: '{{ states("media_player.bathroom_speaker") }}'
-        friendly_name: En-Suite
-      genius_ensuite:
-        value_template: >-
-          {% if is_state('input_boolean.harry_room_warm', 'on') %}
-            Warm
-          {% else %}
-            Cold
-          {% endif %}
-        friendly_name: En-Suite
-      genius_james:
-        value_template: >-
-          {% if is_state('input_boolean.harry_room_warm', 'on') %}
-            Warm
-          {% else %}
-            Cold
-          {% endif %}
-        friendly_name: James' Room
-      genius_harry:
-        friendly_name: Harry’s Room
-        value_template: >-
-          {% if is_state('input_boolean.harry_room_warm', 'on') %}
-            Warm
-          {% else %}
-            Cold
-          {% endif %}
-      genius_bathroom:
-        value_template: >-
-          {% if is_state('input_boolean.bathroom_warm', 'on') %}
-            Warm
-          {% else %}
-            Cold
-          {% endif %}
-        friendly_name: Bathroom
-      genius_bathroom_heating:
-        value_template: >-
-          {% if is_state('input_boolean.bathroom_heating', 'on') %}
-            Heating
-          {% else %}
-            Not Heating
-          {% endif %}
-        friendly_name: Bathroom Heating
-      genius_harry_room_heating:
-        value_template: >-
-          {% if is_state('input_boolean.harry_room_heating', 'on') %}
-            Heating
-          {% else %}
-            Not Heating
-          {% endif %}
-        friendly_name: Harry's Room Heating
-      genius_james_room_heating:
-        value_template: >-
-          {% if is_state('input_boolean.james_room_heating', 'on') %}
-            Heating
-          {% else %}
-            Not Heating
-          {% endif %}
-        friendly_name: James' Room Heating
-        
+############################
+#
+# Enablers
+#
+############################
+
+config:
+http:
+  api_password: !secret http_password
+updater:
+discovery:
+conversation:
+history:
+logbook:
+#map:
+sun:
+tts:
+  - platform: google
+#cloud:
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: http://192.168.1.152:3218
+
+############################
+#
+# Components
+#
+############################
+
+blink:
+  username: !secret blink_username
+  password: !secret blink_password
 weather:
   - platform: metoffice
     api_key: !secret metoffice_key
-
-# Pushbullet
 notify:
   - name: NOTIFIER_PB
     platform: pushbullet
     api_key: !secret pushbullet
-
-# ifttt
 ifttt:
   key: !secret ifttt
-
-# ffmpeg
 ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
-
-# Z Wave
 zwave:
   usb_path: /dev/ttyACM0
-
-# Tracking
-#device_tracker:
-#  - platform: nmap_tracker
-#    hosts: 
-#      - 192.168.1.124
-#      - 192.168.1.71
-#    home_interval: 20
-
-# RFX433
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 
+      - 192.168.1.124
+      - 192.168.1.71
+    home_interval: 20
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A11I6NWQ-if00-port0
   debug: True
   dummy: False
-
-light:
-# RFX
-  - platform: rfxtrx
-    automatic_add: True
-    devices:
-      0a140000f427e40d010060:
-        name: Bathroom Switch
-      0a14000034204302010070:
-        name: Downstairs
-      0a14000034204303010070:
-        name: Landing
-      0a14000034204401010070:
-        name: Dining Room
-      0a14000034204403010070:
-        name: Kitchen 1
-      0a14000134204404010070:
-        name: Kitchen 2
-      0a14000234204103010070:
-        name: Lava Lamp
-      0a14000034204101010070:
-        name: Ceiling Lights
-      0a14000134204102010070:
-        name: Wall Lights
-      0a14000234204301010070:
-        name: Coloured Light
-      0a14000034204601010070:
-        name: Outside
-      0a14000134204501010070:
-        name: Bathroom
-      0a14000234204201010070:
-        name: Playroom
-      0a140000f3b5a60d010060:
-        name: En-suite
-
-# LIFX
-  - platform: lifx
-
-switch:
-# RFX
-  - platform: rfxtrx
-    automatic_add: True
-    devices:
-      0a14000034204001000070:
-        name: Printer
- 
-#Blink
-blink:
-  username: !secret blink_username
-  password: !secret blink_password
 
 #######################
 #
 # Input Select
 #
 #######################
+
 input_select:
   radio_downstairs:
     name: Station
@@ -315,4 +97,3 @@ input_select:
       - BBC Radio 5 live
       - BBC Radio 5 live sports extra
     icon: mdi:radio
-
