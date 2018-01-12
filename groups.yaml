@@ -3,35 +3,24 @@
 # Tabs
 #
 #############
-#default_view:
-cameras:
+default_view:
+#cameras:
   name: Cameras
   view: yes
+  icon: mdi:camcorder
   entities:
+    - device_tracker.samsunggalaxys7domain_not_setinvalid
+    - device_tracker.galaxya32016domain_not_setinvalid
     - group.all_cameras
-security:
-  name: Security
+media:
+  name: Media
+  icon: mdi:speaker
   view: yes
   entities:
-    - binary_sensor.lounge_sensor
-    - binary_sensor.hall_sensor
-    - group.blink_front
-    - group.blink_back
-    - group.blink_lounge
-    - binary_sensor.blink_armed_status
-weather:
-  name: Climate
-  view: yes
-  entities:
-    - sun.sun
-    - sensor.lounge_temperature
-    - sensor.hall_temperature
-    - sensor.wardrobe_temperature
-    - weather.met_office_faringdon
-    - group.metoffice
-    - camera.radar__satellite
+    - group.radio
 lights:
   name: Lighting
+  icon: mdi:lightbulb-on
   view: yes
   entities:
     - group.kitchen_lights
@@ -40,11 +29,40 @@ lights:
     - group.upstairs_lights
     - group.other_lights
     - group.all_lights
-media:
-  name: Media
+    - switch.printer
+weather:
+  name: Climate
+  icon: mdi:temperature-celsius
   view: yes
   entities:
-    - group.radio
+    - sun.sun
+    - sensor.lounge_temperature
+    - sensor.hall_temperature
+    - sensor.wardrobe_temperature
+    - sensor.genius_james
+    - sensor.genius_harry
+    - sensor.genius_ensuite
+    - weather.met_office_faringdon
+    - group.metoffice
+    - camera.radar__satellite
+security:
+  name: Security
+  icon: mdi:security-home
+  view: yes
+  entities:
+    - binary_sensor.lounge_sensor
+    - binary_sensor.hall_sensor
+    - group.blink_front
+    - group.blink_back
+    - group.blink_lounge
+    - binary_sensor.blink_armed_status
+other:
+  name: Other
+  icon: mdi:dots-horizontal
+  view: yes
+  entities:
+    - group.all_lights
+    - group.all_automations
 #############
 #
 # Logicals
@@ -98,33 +116,33 @@ kitchen_lights:
   entities:
     - sensor.lounge_luminance
     - light.kitchen_lamp
-    - input_boolean.dining_room_lights
     - input_boolean.kitchen_lights
     - input_boolean.all_kitchen_lights
+    - light.dining_room
 lounge_lights:
   name: Lounge
   entities:
-    - input_boolean.lava_lamp
-    - input_boolean.wall_lights
-    - input_boolean.ceiling_lights
+    - light.ceiling_lights
+    - light.wall_lights
+    - light.lava_lamp
 hall_lights:
   name: Hall
   entities:
     - sensor.hall_luminance
-    - input_boolean.hall_lights
-    - input_boolean.landing_light
-    - input_boolean.coloured_light
+    - light.downstairs
+    - light.landing
+    - light.coloured_light
 other_lights:
   name: Other
   entities:
     - binary_sensor.wardrobe_sensor
     - sensor.wardrobe_access_control
     - sensor.wardrobe_luminance
-    - input_boolean.playroom_light
-    - input_boolean.outside_light
-    - input_boolean.ensuite_light
     - switch.wardrobe_socket_switch
-    - input_boolean.bathroom_light
+    - light.bathroom
+    - light.playroom
+    - light.outside
+    - light.ensuite
 #############
 #
 # Radio
@@ -135,9 +153,9 @@ radio:
   entities:
     - input_boolean.downstairs_radio
     - input_select.radio_downstairs
-#    - media_player.kitchen
-#    - media_player.lounge
-#    - media_player.bathroom_speaker
+    - media_player.kitchen
+    - media_player.lounge
+    - media_player.bathroom_speaker
     - sensor.sonos_kitchen_state
     - sensor.sonos_lounge_state
     - sensor.sonos_ensuite_state

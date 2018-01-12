@@ -1,7 +1,5 @@
 camera.generic_camera:
   friendly_name: Radar & Satellite
-#group.all_devices:
-#  hidden: false
 group.all_lights:
   hidden: false
   friendly_name: Lights
@@ -143,9 +141,14 @@ group.media_player:
   hidden: false
 media_player.dining_room:
   entity_picture: ''
+media_player.bathroom_speaker:
+  entity_picture: ''
+  friendly_name: Ensuite
 sensor.sonos_kitchen_state:
   icon: mdi:speaker
 sensor.sonos_ensuite_state:
   icon: mdi:speaker
 sensor.sonos_lounge_state:
   icon: mdi:speaker
+light.bathroom_switch:
+  icon: mdi:flash

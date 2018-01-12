@@ -34,7 +34,7 @@ frontend:
     purple:
       primary-color: purple
     lightgreen:
-      primary-color: lightgreen
+      primary-color: darkgreen
 
 # Enables configuration UI
 config:
@@ -109,12 +109,6 @@ sensor:
       - humidity
   - platform: rfxtrx
     automatic_add: true
-    devices:
-      0a14000034204102101980:
-        name: Outside
-    data_type:
-      - Humidity
-      - Temperature
   - platform: template
     sensors:
       sonos_kitchen_state:
@@ -179,7 +173,7 @@ device_tracker:
     hosts: 
       - 192.168.1.124
       - 192.168.1.71
-    home_interval: 10
+    home_interval: 20
 
 # RFX433
 rfxtrx:
@@ -193,33 +187,45 @@ light:
     automatic_add: True
     devices:
       0a140000f427e40d010060:
-        name: LW01
+        name: Bathroom Switch
       0a14000034204302010070:
-        name: Downstairs LW
+        name: Downstairs
       0a14000034204303010070:
-        name: Landing LW
+        name: Landing
       0a14000034204401010070:
-        name: Dining Room LW
+        name: Dining Room
       0a14000034204403010070:
-        name: Kitchen 1 LW
+        name: Kitchen 1
       0a14000134204404010070:
-        name: Kitchen 2 LW
+        name: Kitchen 2
       0a14000234204103010070:
-        name: Lava Lamp LW
+        name: Lava Lamp
       0a14000034204101010070:
-        name: Ceiling Lights LW
+        name: Ceiling Lights
       0a14000134204102010070:
-        name: Wall Lights LW
+        name: Wall Lights
       0a14000234204301010070:
-        name: Coloured Light LW
+        name: Coloured Light
+      0a14000034204601010070:
+        name: Outside
+      0a14000134204501010070:
+        name: Bathroom
+      0a14000234204201010070:
+        name: Playroom
+      0a140000f3b5a60d010060:
+        name: En-suite
 
 # LIFX
   - platform: lifx
 
 switch:
-  platform: rfxtrx
-  automatic_add: True
-
+# RFX
+  - platform: rfxtrx
+    automatic_add: True
+    devices:
+      0a14000034204001000070:
+        name: Printer
+ 
 #Blink
 blink:
   username: !secret blink_username

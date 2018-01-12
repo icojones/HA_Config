@@ -5,18 +5,6 @@
   kitchen_lights:
     name: Kitchen
     icon: mdi:lightbulb-on-outline
-  outside_light:
-    name: Outside
-    icon: mdi:lightbulb-on-outline
-  playroom_light:
-    name: Playroom
-    icon: mdi:lightbulb-on-outline
-  ensuite_light:
-    name: En-suite
-    icon: mdi:lightbulb-on-outline
-  bathroom_light:
-    name: Bathroom
-    icon: mdi:lightbulb-on-outline
   downstairs_radio:
     name: Downstairs
     icon: mdi:radio

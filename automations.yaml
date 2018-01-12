@@ -1,3 +1,4 @@
+# Wardrobe Light
 - action:
   - data:
       entity_id: switch.wardrobe_socket_switch
@@ -34,12 +35,18 @@
     to: '22'
     for:
       minutes: 1
+# All Kitchen Lights
 - action:
   - data:
-      event: all_kitchen_lights_on
-    service: ifttt.trigger
-  alias: all_kitchen_lights_on
-  id: '1515182538011'
+      entity_id: light.kitchen_1_lw
+    service: light.turn_on
+  - data:
+      entity_id: light.kitchen_2_lw
+    service: light.turn_on
+  - data:
+      entity_id: light.dining_room_lw
+    service: light.turn_on
+    alias: all_kitchen_lights_on
   trigger:
   - entity_id: input_boolean.all_kitchen_lights
     from: 'off'
@@ -47,26 +54,29 @@
     to: 'on'
 - action:
   - data:
-      event: all_kitchen_lights_off
-    service: ifttt.trigger
-  alias: all_kitchen_lights_off
-  condition: []
-  id: '1515182972886'
+      entity_id: light.kitchen_1_lw
+    service: light.turn_off
+  - data:
+      entity_id: light.kitchen_2_lw
+    service: light.turn_off
+  - data:
+      entity_id: light.dining_room_lw
+    service: light.turn_off
+    alias: all_kitchen_lights_off
   trigger:
   - entity_id: input_boolean.all_kitchen_lights
     from: 'on'
     platform: state
     to: 'off'
+# Kitchen Lights
 - action:
   - data:
-      event: kitchen1_lights_on
-    service: ifttt.trigger
+      entity_id: light.kitchen_1_lw
+    service: light.turn_on
   - data:
-      event: kitchen2_lights_on
-    service: ifttt.trigger
+      entity_id: light.kitchen_2_lw
+    service: light.turn_on
   alias: kitchen lights on
-  condition: []
-  id: '1515183803362'
   trigger:
   - entity_id: input_boolean.kitchen_lights
     from: 'off'
@@ -74,106 +84,18 @@
     to: 'on'
 - action:
   - data:
-      event: kitchen1_lights_off
-    service: ifttt.trigger
+      entity_id: light.kitchen_1_lw
+    service: light.turn_off
   - data:
-      event: kitchen2_lights_off
-    service: ifttt.trigger
+      entity_id: light.kitchen_2_lw
+    service: light.turn_off
   alias: kitchen lights off
-  condition: []
   trigger:
   - entity_id: input_boolean.kitchen_lights
     from: 'on'
     platform: state
     to: 'off'
-- action:
-  - data:
-      event: outside_lights_off
-    service: ifttt.trigger
-  alias: Outside Light Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.outside_light
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: outside_lights_on
-    service: ifttt.trigger
-  alias: Outside Light On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.outside_light
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: playroom_lights_off
-    service: ifttt.trigger
-  alias: Playroom Light Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.playroom_light
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: playroom_lights_on
-    service: ifttt.trigger
-  alias: Playroom Light On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.playroom_light
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: ensuite_light_off
-    service: ifttt.trigger
-  alias: En-suite Light Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.ensuite_light
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: ensuite_light_on
-    service: ifttt.trigger
-  alias: En-suite Light On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.ensuite_light
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      event: bathroom_light_off
-    service: ifttt.trigger
-  alias: Bathroom Light Off
-  condition: []
-  trigger:
-  - entity_id: input_boolean.bathroom_light
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      event: bathroom_light_on
-    service: ifttt.trigger
-  alias: Bathroom Light On
-  condition: []
-  trigger:
-  - entity_id: input_boolean.bathroom_light
-    from: 'off'
-    platform: state
-    to: 'on'
+# Radio
 - action:
   - data:
       entity_id: media_player.lounge
@@ -333,6 +255,7 @@
   - entity_id: input_select.radio_downstairs
     platform: state
     to: BBC Radio 6 Music
+# Blink Scheduled Snapshot
 - action:
   - data:
       friendly_name: Lounge
@@ -373,7 +296,7 @@
   - platform: time
     minutes: /10
     seconds: 0
-
+# Kitchen Sensor Light
 - action:
   - data:
       entity_id: light.kitchen_lamp
@@ -427,6 +350,7 @@
     from: 'on'
     platform: state
     to: 'off'
+# Hall Sensor Light
 - action:
   - data:
       event: hall_lights_on
