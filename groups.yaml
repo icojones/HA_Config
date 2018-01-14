@@ -14,7 +14,7 @@ default_view:
     - group.all_cameras
 media:
   name: Media
-  icon: mdi:speaker
+  icon: mdi:music
   view: yes
   entities:
     - group.radio
@@ -40,6 +40,7 @@ weather:
     - sensor.hall_temperature
     - sensor.wardrobe_temperature
     - group.genius
+    - weblink.geniushub
 #    - sensor.genius_james
 #    - sensor.genius_harry
 #    - sensor.genius_ensuite
@@ -121,6 +122,12 @@ logicals:
   entities:
     - input_boolean.kitchen_tripped
     - input_boolean.hall_tripped
+    - input_boolean.james_room_heating
+    - input_boolean.harry_room_heating
+    - input_boolean.bathroom_heating
+    - input_boolean.bathroom_warm
+    - input_boolean.james_room_warm
+    - input_boolean.harry_room_warm
 #############
 #
 # Lights
@@ -186,9 +193,11 @@ radio:
     - media_player.kitchen
     - media_player.lounge
     - media_player.bathroom_speaker
+    - media_player.garage
     - sensor.sonos_kitchen_state
     - sensor.sonos_lounge_state
     - sensor.sonos_ensuite_state
+    - sensor.sonos_garage_state
 #############
 #
 # Cameras

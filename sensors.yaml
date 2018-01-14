@@ -49,7 +49,8 @@
       - precip_intensity_max
       #- uv_index
     units: uk2
-    # update_interval:
+    update_interval: 
+      minutes: 3
   # Moon    
   - platform: moon
   - platform: template
@@ -63,6 +64,9 @@
       sonos_ensuite_state:
         value_template: '{{ states("media_player.bathroom_speaker") }}'
         friendly_name: En-Suite
+      sonos_garage_state:
+        value_template: '{{ states("media_player.garage") }}'
+        friendly_name: Garage
       genius_ensuite:
         value_template: >-
           {% if is_state('input_boolean.harry_room_warm', 'on') %}

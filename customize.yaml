@@ -153,6 +153,8 @@ sensor.sonos_ensuite_state:
   icon: mdi:speaker
 sensor.sonos_lounge_state:
   icon: mdi:speaker
+sensor.sonos_garage_state:
+  icon: mdi:speaker
 light.bathroom_switch:
   icon: mdi:flash
 sensor.dark_sky_forecast_apparent_temperature:
@@ -288,3 +290,7 @@ sensor.genius_james_room_heating:
 switch.0a140003f342f301010060:
   friendly_name: Landing Light Switch
   icon: mdi:flash
+switch.0a14004934204f10010070:
+  friendly_name: LW03
+weblink.geniushub:
+  friendly_name: Genius Hub

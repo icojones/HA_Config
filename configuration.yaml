@@ -32,6 +32,8 @@ frontend: !include themes.yaml
 config:
 http:
   api_password: !secret http_password
+  ssl_certificate: '/etc/letsencrypt/live/treetops108.duckdns.org/fullchain.pem'
+  ssl_key: '/etc/letsencrypt/live/treetops108.duckdns.org/privkey.pem'
 updater:
 discovery:
 conversation:
@@ -80,6 +82,11 @@ rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A11I6NWQ-if00-port0
   debug: True
   dummy: False
+#cover:
+#  - platform: myq
+#    username: email@email.com
+#    password: password
+#    type: chamberlain
 
 #######################
 #
@@ -97,3 +104,14 @@ input_select:
       - BBC Radio 5 live
       - BBC Radio 5 live sports extra
     icon: mdi:radio
+
+#######################
+#
+# links
+#
+#######################
+
+weblink:
+  entities:
+    - name: GeniusHub
+      url: http://geniushub.co.uk/app/
