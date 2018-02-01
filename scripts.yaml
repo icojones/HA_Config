@@ -39,3 +39,48 @@
       message: '{{ message }}'
       title: '{{ title }}'
     service: notify.notifier_pb
+'1516016418517':
+  alias: Bathroom is cool
+  sequence:
+  - data:
+      entity_id: input_boolean.bathroom_warm
+    service: input_boolean.turn_off
+  - data:
+      message: Bathroom is cool
+    service: notify.notifier_pb
+'1517064326229':
+  alias: Kitchen Lights On
+  sequence:
+  - data:
+      entity_id: light.kitchen_1
+    service: homeassistant.turn_on
+  - data:
+      entity_id: light.kitchen_2
+    service: homeassistant.turn_on
+'1517064544159':
+  alias: Kitchen Lights Off
+  sequence:
+  - data:
+      entity_id: light.kitchen_1
+    service: homeassistant.turn_off
+  - data:
+      entity_id: light.kitchen_2
+    service: homeassistant.turn_off
+'1517080433748':
+  alias: All Kitchen Lights On
+  sequence:
+  - data:
+      entity_id: light.dining_room
+    service: homeassistant.turn_on
+  - data:
+      entity_id: script.1517064326229
+    service: script.turn_on
+'1517080548816':
+  alias: All Kitchen Lights Off
+  sequence:
+  - data:
+      entity_id: light.dining_room
+    service: homeassistant.turn_off
+  - data:
+      entity_id: script.1517064544159
+    service: script.turn_on

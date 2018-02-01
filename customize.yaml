@@ -294,3 +294,30 @@ switch.0a14004934204f10010070:
   friendly_name: LW03
 weblink.geniushub:
   friendly_name: Genius Hub
+sensor.ssl_cert_expiry:
+  friendly_name: SSL Certificate Expiry
+  icon: mdi:timetable
+sensor.cpu_temperature:
+  friendly_name: CPU Temp
+  icon: mdi:desktop-classic
+sensor.speedtest_download:
+  friendly_name: Download
+  icon: mdi:download-network
+sensor.speedtest_upload:
+  friendly_name: Upload
+  icon: mdi:upload-network
+sensor.speedtest_ping:
+  friendly_name: Ping
+  icon: mdi:router-wireless
+zwave.fibaro_system_fgms001_motion_sensor_2:
+  friendly_name: Hall
+sensor.garage_left:
+  friendly_name: Left
+  icon: mdi:garage
+sensor.garage_right:
+  friendly_name: Right
+  icon: mdi:garage
+sensor.batt_garage_left:
+  icon: mdi:battery
+# sensor.batt_garage_right:
+#   icon: mdi:battery

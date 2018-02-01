@@ -9,9 +9,14 @@ default_view:
   view: yes
   icon: mdi:camcorder
   entities:
-    - device_tracker.matts7
-    - device_tracker.kata3
+#    - sensor.garage_left
+#    - sensor.garage_left_access_control
+#    - sensor.garage_right
+#    - sensor.garage_right_access_control
     - group.all_cameras
+    - group.garage
+#    - cover.garage_door  
+#    - device_tracker.kata3
 media:
   name: Media
   icon: mdi:music
@@ -29,7 +34,7 @@ lights:
     - group.upstairs_lights
     - group.other_lights
     - group.all_lights
-    - switch.printer
+    - group.switches
 weather:
   name: Climate
   icon: mdi:temperature-celsius
@@ -70,6 +75,12 @@ other:
     - group.all_lights
     - group.all_automations
     - group.logicals
+    - sensor.ssl_cert_expiry
+    - sensor.ha_uptime
+    - sensor.cpu_temperature
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
 #############
 #
 # Logicals
@@ -128,6 +139,22 @@ logicals:
     - input_boolean.bathroom_warm
     - input_boolean.james_room_warm
     - input_boolean.harry_room_warm
+    - input_boolean.garage_left
+    - input_boolean.garage_right
+switches:
+  name: Switches
+  entities:
+    - switch.printer
+    - switch.garage_socket_switch
+garage:
+  name: Garage
+  entities:
+    - sensor.garage_left
+    - sensor.batt_garage_left
+    # - sensor.garage_right
+    # - sensor.batt_garage_right
+    - cover.garage_door
+    - switch.garage_socket_switch
 #############
 #
 # Lights

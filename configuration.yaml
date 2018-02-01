@@ -45,10 +45,14 @@ tts:
   - platform: google
 #cloud:
 panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: http://192.168.1.152:3218
+  # configurator:
+  #   title: Configurator
+  #   icon: mdi:wrench
+  #   url: http://192.168.1.152:3218
+  # genius_hub:
+  #   title: 'Genius Hub'
+  #   icon: mdi:radiator
+  #   url: https://geniushub.co.uk/app
 
 ############################
 #
@@ -72,21 +76,21 @@ ffmpeg:
   ffmpeg_bin: /usr/bin/avconv
 zwave:
   usb_path: /dev/ttyACM0
-device_tracker:
-  - platform: nmap_tracker
-    hosts: 
-      - 192.168.1.124
-      - 192.168.1.71
-    home_interval: 20
+#device_tracker:
+#  - platform: nmap_tracker
+#    hosts: 
+#      - 192.168.1.124
+#      - 192.168.1.71
+#    home_interval: 20
 rfxtrx:
   device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A11I6NWQ-if00-port0
   debug: True
   dummy: False
-#cover:
-#  - platform: myq
-#    username: email@email.com
-#    password: password
-#    type: chamberlain
+cover:
+  - platform: myq
+    username: !secret myq_email
+    password: !secret myq_password
+    type: chamberlain
 
 #######################
 #
@@ -103,6 +107,7 @@ input_select:
       - Absolute Radio 90s
       - BBC Radio 5 live
       - BBC Radio 5 live sports extra
+    initial: BBC Radio 5 live
     icon: mdi:radio
 
 #######################

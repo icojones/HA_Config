@@ -1,3 +1,4 @@
+# Wardrobe Light
 - action:
   - data:
       entity_id: switch.wardrobe_socket_switch
@@ -34,6 +35,7 @@
     to: '22'
     for:
       minutes: 1
+# All Kitchen Lights
 - action:
   - data:
       entity_id: light.kitchen_1_lw
@@ -66,6 +68,7 @@
     from: 'on'
     platform: state
     to: 'off'
+# Kitchen Lights
 - action:
   - data:
       entity_id: light.kitchen_1_lw
@@ -92,6 +95,7 @@
     from: 'on'
     platform: state
     to: 'off'
+# Radio
 - action:
   - data:
       entity_id: media_player.lounge
@@ -251,6 +255,7 @@
   - entity_id: input_select.radio_downstairs
     platform: state
     to: BBC Radio 6 Music
+# Blink Scheduled Snapshot
 - action:
   - data:
       friendly_name: Lounge
@@ -258,12 +263,12 @@
   alias: Scheduled Lounge Blink
   condition:
   - after: 06:00
-    before: '23:59'
+    before: '23:00'
     condition: time
   id: '1515314054062'
   trigger:
-  - minutes: /10
-    platform: time
+  - platform: time
+    minutes: /10
     seconds: 0
 - action:
   - data:
@@ -291,6 +296,7 @@
   - platform: time
     minutes: /10
     seconds: 0
+# Kitchen Sensor Light
 - action:
   - data:
       entity_id: light.kitchen_lamp
@@ -311,7 +317,7 @@
     conditions:
     - condition: sun
       after: sunset
-      after_offset: 00:15:00
+      after_offset: "00:15:00"
     - condition: sun
       before: sunrise
   id: '1515498324858'
@@ -335,7 +341,7 @@
       after: sunset
     - condition: state
       entity_id: input_boolean.kitchen_tripped
-      state: 'on'
+      state: 'on'    
   id: '1515499340625'
   trigger:
   - entity_id: binary_sensor.lounge_sensor
@@ -344,6 +350,7 @@
     from: 'on'
     platform: state
     to: 'off'
+# Hall Sensor Light
 - action:
   - data:
       entity_id: light.downstairs
@@ -353,19 +360,14 @@
     service: input_boolean.turn_on
   alias: Sensor Hall Lights On
   condition:
-  - condition: and
-    conditions:
-    - condition: time
-      after: '15:15:00'
-      before: '23:59:00'
-    - condition: state
-      entity_id: input_boolean.hall_tripped
-      state: 'off'
+  - condition: state
+    entity_id: light.downstairs
+    state: 'off'
   - condition: or
     conditions:
     - condition: sun
       after: sunset
-      after_offset: +00:30:00
+      after_offset: "00:15:00"
     - condition: sun
       before: sunrise
   trigger:
@@ -396,24 +398,27 @@
     from: 'on'
     platform: state
     to: 'off'
+# SSL Cert Expiry
 - action:
   - data:
-      message: SSL Certificate expires in 2 weeks
+      message: 'SSL Certificate expires in 2 weeks'
     service: persistent_notification.create
   alias: SSL Cert Expiry
   trigger:
   - entity_id: sensor.ssl_cert_expiry
     platform: numeric_state
     below: 15
+# Kathryn Home
 - action:
   - data:
-      message: Kathryn is home
+      message: 'Kathryn is home'
     service: notify.notifier_pb
   alias: kathryn home
   trigger:
   - entity_id: device_tracker.kata3
     platform: state
-    to: home
+    to: 'home'
+# Coloured Light Timed On
 - action:
   - data:
       entity_id: light.coloured_light
@@ -422,6 +427,7 @@
   trigger:
     platform: sun
     event: sunset
+# Coloured Light Timed Off
 - action:
   - data:
       entity_id: light.coloured_light
@@ -429,234 +435,4 @@
   alias: Coloured Light Timed Off
   trigger:
     platform: time
-    at: '22:00:00'
-- action:
-  - data:
-      entity_id: input_boolean.garage_left
-    service: input_boolean.turn_on
-  alias: Garage Left Open
-  trigger:
-  - entity_id: sensor.garage_left_access_control
-    from: '23'
-    platform: state
-    to: '22'
-- action:
-  - data:
-      entity_id: input_boolean.garage_left
-    service: input_boolean.turn_on
-  alias: Garage Left Sleeping Open
-  trigger:
-  - entity_id: sensor.garage_left_access_control
-    from: '22'
-    platform: state
-    to: '254'
-- action:
-  - data:
-      entity_id: input_boolean.garage_left
-    service: input_boolean.turn_off
-  alias: Garage Left Closed
-  trigger:
-  - entity_id: sensor.garage_left_access_control
-    from: '22'
-    platform: state
-    to: '23'
-- action:
-  - data:
-      entity_id: input_boolean.garage_left
-    service: input_boolean.turn_on
-  alias: Garage Left Sleeping to Open
-  trigger:
-  - entity_id: sensor.garage_left_access_control
-    from: '254'
-    platform: state
-    to: '22'
-- action:
-  - data:
-      entity_id: input_boolean.garage_left
-    service: input_boolean.turn_off
-  alias: Garage Left Sleeping to Closed
-  trigger:
-  - entity_id: sensor.garage_left_access_control
-    from: '254'
-    platform: state
-    to: '23'
-- action:
-  - data:
-      entity_id: input_boolean.garage_left
-    service: input_boolean.turn_off
-  alias: Garage Left Sleeping Closed
-  trigger:
-  - entity_id: sensor.garage_left_access_control
-    from: '23'
-    platform: state
-    to: '254'
-# - action:
-#   - data:
-#       entity_id: input_boolean.garage_right
-#     service: input_boolean.turn_on
-#   alias: Garage Right Open
-#   trigger:
-#   - entity_id: sensor.garage_right_access_control
-#     from: '23'
-#     platform: state
-#     to: '22'
-# - action:
-#   - data:
-#       entity_id: input_boolean.garage_right
-#     service: input_boolean.turn_on
-#   alias: Garage Right Sleeping Open
-#   trigger:
-#   - entity_id: sensor.garage_right_access_control
-#     from: '22'
-#     platform: state
-#     to: '254'
-# - action:
-#   - data:
-#       entity_id: input_boolean.garage_right
-#     service: input_boolean.turn_off
-#   alias: Garage Right Closed
-#   trigger:
-#   - entity_id: sensor.garage_right_access_control
-#     from: '22'
-#     platform: state
-#     to: '23'
-# - action:
-#   - data:
-#       entity_id: input_boolean.garage_right
-#     service: input_boolean.turn_on
-#   alias: Garage Right Sleeping to Open
-#   trigger:
-#   - entity_id: sensor.garage_right_access_control
-#     from: '254'
-#     platform: state
-#     to: '22'
-# - action:
-#   - data:
-#       entity_id: input_boolean.garage_right
-#     service: input_boolean.turn_off
-#   alias: Garage Right Sleeping to Closed
-#   trigger:
-#   - entity_id: sensor.garage_right_access_control
-#     from: '254'
-#     platform: state
-#     to: '23'
-# - action:
-#   - data:
-#       entity_id: input_boolean.garage_right
-#     service: input_boolean.turn_off
-#   alias: Garage Right Sleeping Closed
-#   trigger:
-#   - entity_id: sensor.garage_right_access_control
-#     from: '23'
-#     platform: state
-#     to: '254'
-- action:
-  - data:
-      message: Garage Door still open
-    service: notify.notifier_pb
-  alias: Garage Door still open
-  trigger:
-    platform: state
-    entity_id: cover.garage_door
-    to: open
-    for:
-      minutes: 10
-- action:
-  - data:
-      entity_id: script.1517064326229
-    service: script.turn_on
-  alias: Kitchen Lights On
-  condition: []
-  id: '1517064418082'
-  trigger:
-  - entity_id: input_boolean.kitchen_lights
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      entity_id: script.1517064544159
-    service: script.turn_on
-  alias: Kitchen Lights Off
-  condition: []
-  id: '1517064621649'
-  trigger:
-  - entity_id: input_boolean.kitchen_lights
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      entity_id: script.1517080433748
-    service: script.turn_on
-  alias: All Kitchen Lights On
-  condition: []
-  id: '1517082754808'
-  trigger:
-  - entity_id: input_boolean.all_kitchen_lights
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      entity_id: script.1517080548816
-    service: script.turn_on
-  alias: All Kitchen Lights Off
-  condition: []
-  id: '1517082868466'
-  trigger:
-  - entity_id: input_boolean.all_kitchen_lights
-    from: 'on'
-    platform: state
-    to: 'off'
-- action:
-  - data:
-      message: Left Garage Door has been open for 1 hour
-    service: notify.notifier_pb
-  - data:
-      message: Left Garage Door has been open for 1 hour
-    service: persistent_notification.create
-  alias: Garage Left Open 60 mins
-  condition: []
-  id: '1517146669274'
-  trigger:
-  - entity_id: input_boolean.garage_left
-    for:
-      minutes: 60
-    from: 'off'
-    platform: state
-    to: 'on'
-- action:
-  - data:
-      message: Left Garage Door has been open for 30 minutes
-    service: notify.notifier_pb
-  - data:
-      message: Left Garage Door has been open for 30 minutes
-    service: persistent_notification.create
-  alias: Garage Left Open 30 mins
-  condition: []
-  id: '1517146802283'
-  trigger:
-  - entity_id: input_boolean.garage_left
-    from: 'off'
-    platform: state
-    to: 'on'
-    for:
-      minutes: 30
-- action:
-  - data:
-      message: Left Garage Door has been open for 2 hours
-    service: notify.notifier_pb
-  - data:
-      message: Left Garage Door has been open for 2 hours
-    service: persistent_notification.create
-  alias: Garage Door Left open 2 hours
-  condition: []
-  id: '1517146970190'
-  trigger:
-  - entity_id: input_boolean.garage_left
-    from: 'off'
-    platform: state
-    to: 'on'
-    for:
-      minutes: 120
+    at: "22:00:00"

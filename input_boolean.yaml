@@ -30,6 +30,9 @@
   harry_room_heating:
     name: Harry's Room Heating
     icon: mdi:radiator
-  james_room_heating:
-    name: James' Room Heating
-    icon: mdi:radiator
+  garage_left:
+    name: Garage L
+    icon: mdi:garage
+  garage_right:
+    name: Garage R
+    icon: mdi:garage
